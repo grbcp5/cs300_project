@@ -1,17 +1,35 @@
 package edu.mst.grbcp5;
 
+import jdk.nashorn.internal.runtime.options.Options;
+
+import javax.swing.text.html.Option;
+import java.util.Arrays;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
 
   public static void main( String[] args ) {
 
+    Map<String, String> options;
+
     /* Filter out incorrect command line args */
     if( !filterIncorrectUsage( args ) ) {
       return;
     }
 
-    System.out.println( "Main" );
+    options = OptionsParser.parseOptions(
+      Arrays.copyOfRange(
+        args,
+        1,
+        args.length
+      )
+    );
+
+    System.out.println( "Options" );
+    for ( String key : options.keySet() ) {
+      System.out.println( key + ": " + options.get( key ) );
+    }
 
   }
 

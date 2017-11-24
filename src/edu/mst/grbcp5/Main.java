@@ -41,7 +41,7 @@ public class Main {
 
     }
 
-    if( !"server_master_standalone_sa".contains( args[ 0 ] ) ) {
+    if( !"server_master_standalone_sa".contains( args[ 0 ].toLowerCase() ) ) {
       displayUsage();
       return false;
     }
